@@ -1,4 +1,4 @@
-from .database import ComparisonHistory
+from database import ComparisonHistory
 from .schemas import (
     ComparisonRequest,
     ComparisonResponse,

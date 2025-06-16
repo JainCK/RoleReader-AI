@@ -3,7 +3,7 @@ from typing import List, Optional
 import logging
 from models.database import ComparisonHistory
 from models.schemas import ComparisonRequest, ComparisonResponse, ComparisonHistoryResponse
-from services.nlp_service import NLPService
+from .nlp_service import NLPService
 from utils.text_utils import validate_text_input
 from core.exceptions import ComparisonException, ValidationException
 
