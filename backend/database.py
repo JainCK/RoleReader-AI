@@ -2,10 +2,12 @@ from sqlalchemy import create_engine, Column, Integer, Text, Float, DateTime, JS
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.sql import func
-from app.config import settings
+from app.config.settings import Settings
+
+settings = Settings()
 
 # Database setup
-engine = create_engine(settings.database_url)
+engine = create_engine(settings.get_database_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 

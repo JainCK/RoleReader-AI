@@ -2,6 +2,9 @@ from pydantic import BaseModel, Field, validator
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
+class ErrorResponse(BaseModel):
+    detail: str
+
 class ComparisonRequest(BaseModel):
     resume_text: str = Field(..., min_length=50)
     job_description: str = Field(..., min_length=50)
