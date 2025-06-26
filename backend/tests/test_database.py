@@ -1,6 +1,5 @@
 import pytest
-from backend.models.dbModel import ComparisonHistory
-from backend.database import SessionLocal
+from database import ComparisonHistory, SessionLocal
 
 def test_comparison_history_creation(db_session):
     """Test creating ComparisonHistory record"""

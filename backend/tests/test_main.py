@@ -1,6 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from backend.main import app
+from main import app
 
 @pytest.fixture
 def client():
@@ -42,7 +42,7 @@ def test_compare_endpoint_valid_data(client):
     # In that case, it should return 503
     assert response.status_code in [200, 503]
 
-def test_history_endpoint(client):
+def test_history_endpoint(client, db_session):
     """Test history endpoint"""
     response = client.get("/history")
     assert response.status_code == 200

@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import pytest
 import asyncio
 from fastapi.testclient import TestClient
@@ -5,9 +9,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from backend.main import app
-from backend.database import get_db, Base
-from backend.utils.nlp_processor import NLPProcessor
+from main import app
+from database import get_db, Base
+from app.services.nlp_service import NLPProcessor
 
 # Create test database
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
@@ -42,7 +46,7 @@ def db_session():
     Base.metadata.drop_all(bind=engine)
 
 @pytest.fixture
-def client():
+def client(db_session):
     """Create test client"""
     return TestClient(app)
 

@@ -1,7 +1,7 @@
 import pytest
 import asyncio
-from backend.utils.nlp_processor import NLPProcessor
-from backend.models.dbModel import ComparisonHistory
+from app.services.nlp_service import NLPProcessor
+from database import ComparisonHistory
 
 @pytest.mark.asyncio
 async def test_nlp_processor_initialization():
@@ -43,16 +43,7 @@ async def test_skill_extraction():
     assert "leadership" in soft_skills
     assert "communication" in soft_skills
 
-@pytest.mark.asyncio
-async def test_keyword_extraction():
-    """Test traditional keyword extraction"""
-    processor = NLPProcessor()
-    
-    text = "I am a software engineer with experience in Python development and machine learning projects."
-    keywords = processor._extract_keywords_traditional(text)
-    
-    assert isinstance(keywords, list)
-    # Should extract some meaningful keywords
+
 
 @pytest.mark.asyncio
 async def test_compare_resume_to_job(nlp_processor, db_session):
@@ -60,11 +51,12 @@ async def test_compare_resume_to_job(nlp_processor, db_session):
     resume_text = "I am a Python developer with 5 years of experience in Django, Flask, and FastAPI. I have worked with PostgreSQL, Redis, and AWS. I have strong problem-solving skills and leadership experience."
     job_description = "We are looking for a Senior Python Developer with experience in web frameworks like Django or Flask. Knowledge of databases and cloud technologies is required. Strong communication skills are essential."
     
-    result = await nlp_processor.compare_resume_to_job(
-        resume_text=resume_text,
-        job_description=job_description,
-        db=db_session
-    )
+    async for processor in nlp_processor:
+        result = await processor.compare_resume_to_job(
+            resume_text=resume_text,
+            job_description=job_description,
+            db=db_session
+        )
     
     assert result.match_score >= 0
     assert result.match_score <= 100

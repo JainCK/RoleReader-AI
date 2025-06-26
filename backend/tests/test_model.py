@@ -1,6 +1,6 @@
 import pytest
 from pydantic import ValidationError
-from backend.models.textModel import ComparisonRequest, ComparisonResponse, SkillMatch
+from app.models.schemas import ComparisonRequest, ComparisonResponse, SkillMatch
 
 def test_comparison_request_validation():
     """Test ComparisonRequest validation"""
