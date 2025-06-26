@@ -2,6 +2,8 @@ import re
 from typing import Dict, Any, Optional
 import logging
 
+from app.config import settings
+
 logger = logging.getLogger(__name__)
 
 

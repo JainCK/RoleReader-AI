@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 import logging
-from models.database import ComparisonHistory
-from models.schemas import ComparisonRequest, ComparisonResponse, ComparisonHistoryResponse
-from .nlp_service import NLPService
-from utils.text_utils import validate_text_input
-from core.exceptions import ComparisonException, ValidationException
+from database import ComparisonHistory
+from app.models.schemas import ComparisonRequest, ComparisonResponse, ComparisonHistoryResponse
+from .nlp_service import NLPProcessor
+from app.utils.text_utils import validate_text_input
+from app.exceptions import ComparisonException, ValidationException
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class ComparisonService:
     """Service for handling resume comparisons"""
     
-    def __init__(self, nlp_service: NLPService):
+    def __init__(self, nlp_service: NLPProcessor):
         self.nlp_service = nlp_service
     
     async def compare_resume_job(self, request: ComparisonRequest, db: Session) -> ComparisonResponse:

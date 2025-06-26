@@ -8,9 +8,9 @@ import numpy as np
 from fuzzywuzzy import fuzz
 from sqlalchemy.orm import Session
 
-from .config import settings
-from .database import ComparisonHistory
-from .models import ComparisonResponse, SkillMatch
+from app.config import settings
+from database import ComparisonHistory
+from app.models.schemas import ComparisonResponse, SkillMatch
 
 class NLPProcessor:
     def __init__(self):
