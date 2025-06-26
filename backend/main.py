@@ -4,15 +4,17 @@ from contextlib import asynccontextmanager
 import uvicorn
 from sqlalchemy.orm import Session
 
-from app.config import settings
+from app.config.settings import Settings
 from database import create_tables, get_db, ComparisonHistory
-from app.models import (
+from app.models.schemas import (
     ComparisonRequest, 
     ComparisonResponse, 
     ComparisonHistoryResponse,
     HealthResponse
 )
-from .nlp_service import NLPProcessor
+from app.services.nlp_service import NLPProcessor
+
+settings = Settings()
 
 # Global NLP processor
 nlp_processor = None
