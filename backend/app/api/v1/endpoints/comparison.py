@@ -2,15 +2,15 @@ from fastapi import APIRouter, HTTPException, Depends, status
 from sqlalchemy.orm import Session
 from typing import List
 
-from core.database import get_db
-from models.schemas import (
+from app.database import get_db
+from app.models.schemas import (
     ComparisonRequest,
     ComparisonResponse, 
     ComparisonHistoryResponse
 )
-from services import ComparisonService
-from api.dependencies import get_comparison_service
-from core.exceptions import ComparisonException, ValidationException
+from app.services import ComparisonService
+from app.api.dependencies import get_comparison_service
+from app.exceptions import ComparisonException, ValidationException
 
 router = APIRouter()
 

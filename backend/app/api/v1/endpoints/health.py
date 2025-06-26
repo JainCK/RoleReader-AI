@@ -1,8 +1,8 @@
 # File: backend/api/v1/endpoints/health.py
 from fastapi import APIRouter, Depends
-from models.schemas import HealthResponse
-from services import NLPService
-from api.dependencies import get_nlp_service
+from app.models.schemas import HealthResponse
+from app.services import NLPService
+from app.api.dependencies import get_nlp_service
 
 router = APIRouter()
 

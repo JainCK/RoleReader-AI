@@ -1,7 +1,7 @@
 from fastapi import Depends
 from sqlalchemy.orm import Session
-from core.database import get_db
-from services import NLPService, ComparisonService
+from database import get_db
+from app.services import NLPService, ComparisonService
 
 # Global instances
 nlp_service = NLPService()
