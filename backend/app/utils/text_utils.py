@@ -7,7 +7,7 @@ from app.config import settings
 logger = logging.getLogger(__name__)
 
 
-def validate_text_input(text: str, min_length: int = 50) -> bool:
+def validate_text_input(text: str, min_length: int = 500) -> bool:
     """Validate text input for minimum length and content quality"""
     if not text or not isinstance(text, str):
         return False

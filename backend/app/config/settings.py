@@ -22,8 +22,8 @@ class Settings(BaseSettings):
     allowed_origins: list = ["http://localhost:3000", "http://localhost:3001"]
     
     # Text Processing
-    min_text_length: int = 50
-    max_text_length: int = 10000
+    min_text_length: int = 500
+    max_text_length: int = 20000
     
     class Config:
         env_file = ".env"

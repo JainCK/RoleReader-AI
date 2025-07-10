@@ -6,13 +6,15 @@ class ErrorResponse(BaseModel):
     detail: str
 
 class ComparisonRequest(BaseModel):
-    resume_text: str = Field(..., min_length=50)
-    job_description: str = Field(..., min_length=50)
+    resume_text: str = Field(..., min_length=500, max_length=20000)
+    job_description: str = Field(..., min_length=500, max_length=20000)
     
     @validator('resume_text', 'job_description')
     def validate_text(cls, v):
-        if len(v.strip()) < 50:
-            raise ValueError('Text must be at least 50 characters long')
+        if len(v.strip()) < 500:
+            raise ValueError('Text must be at least 500 characters long')
+        if len(v.strip()) > 20000:
+            raise ValueError('Text must be at most 20000 characters long')
         return v.strip()
 
 class SkillMatch(BaseModel):
