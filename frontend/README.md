@@ -13,24 +13,27 @@ A modern React/Next.js frontend for the AI Resume Comparison API built with Type
 
 ## Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Running FastAPI backend (http://localhost:8000)
 
 ## Getting Started
 
 1. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 2. **Set up environment variables**:
    Create a `.env.local` file with:
+
    ```
    NEXT_PUBLIC_API_URL=http://localhost:8000
    ```
 
 3. **Start the development server**:
+
    ```bash
    npm run dev
    ```
